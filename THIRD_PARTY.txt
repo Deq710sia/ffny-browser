@@ -1,0 +1,83 @@
+Browser runtime adaptations reference DefJamFFNY-recomp and xboxrecomp.
+No game data or generated code is licensed or distributed here.
+
+The browser GPU adapter (runtime/browser_gpu.c) and build-local extracted
+NV2A register handlers use LGPL-2.1-or-later components from xboxrecomp/xemu:
+nv2a_core.c, nv2a_regs.h and portions of the host state layout.
+Copyright (c) 2012 espes; 2015 Jannik Vogel; 2018-2025 Matt Borgerson.
+The adapter replaces native platform dependencies with explicit browser MMIO,
+and rejects unsupported registers. Original handlers are taken from the pinned
+upstream checkout by scripts/build-probe.py; their source and modifications
+remain available for rebuilding/relinking. See LICENSES/LGPL-2.1.txt.
+Upstream: https://github.com/xemu-project/xemu
+
+DefJamFFNY-recomp:
+MIT License
+
+Copyright (c) 2026 Vlad Yanhursky
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+This license covers the code in this repository only. tools/xboxrecomp is a
+separate MIT-licensed project that bundles LGPL-2.1+ components derived from
+xemu; see tools/xboxrecomp/LICENSE, NOTICE and LICENSES/. No game code or
+assets from Def Jam: Fight for NY are included or licensed here.
+
+xboxrecomp:
+MIT License
+
+The game-data-free render probe also builds the pinned NV2A executor,
+vertex interpreter, combiner, flip-hold logic and fixed-function test fixture.
+The immediate-attribute handler and constant-component writer are extracted
+unchanged into the local game probe. d3d8_swizzle.h retains its attribution
+to Fabian Giesen's masked-increment Morton-order algorithm and xemu's
+swizzle implementation as a reference; see the upstream NOTICE.
+
+Copyright (c) 2026 sp00nz
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Browser APU adaptation: runtime/browser_apu.c and runtime/browser_apu_shim.h,
+with build-local apu_core.c register handlers, apu_state.h and apu_vp.c generated
+by scripts/generate-apu.py. The pinned xemu/xboxrecomp APU source is LGPL-2.1-or-later:
+Copyright (c) 2012 espes; 2018-2019 Jannik Vogel; 2019-2025 Matt Borgerson.
+Sources, adaptation scripts and object files remain available for relinking.
+See upstream/tools/xboxrecomp/src/apu and LICENSES/LGPL-2.1.txt.
+
+Browser USB adaptation now also reuses the pinned MIT-licensed OHCI transfer
+walker, usb_hub.c and the device/control portion of usb_gamepad.c, generated
+by scripts/generate-usb.py. Browser input replaces native XInput and host
+threads; original source remains under upstream/tools/xboxrecomp/src/usb.

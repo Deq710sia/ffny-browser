@@ -5,13 +5,13 @@
 [![Platform](https://img.shields.io/badge/Platform-Chromium%20%7C%20WebKit%20%7C%20Gecko-blue)](https://caniuse.com/webgpu)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A client-side browser port of **Def Jam: Fight for NY** (Original Xbox, 2004), statically recompiled from original x86 machine code to WebAssembly, paired with a native WebGPU rendering backend and Web Audio system.
+A client-side browser port of **Def Jam: Fight for NY** (Original Xbox, 2004), statically recompiled from x86 machine code to WebAssembly, paired with a native WebGPU rendering backend and Web Audio system.
 
-Runs completely client-side in modern web browsers — **no plugins, no remote server streaming, and zero emulated virtual machine overhead**.
+Executes client-side in modern web browsers via WebAssembly and WebGPU without server-side streaming or runtime CPU emulation.
 
 ---
 
-## ⚡ Architecture
+## Architecture
 
 Unlike traditional console emulators (which interpret or JIT-compile machine code at runtime inside a virtual machine), this project is built on **static ahead-of-time binary recompilation** using the [xboxrecomp](https://github.com/sp00nznet/xboxrecomp) toolchain.
 
@@ -53,20 +53,20 @@ graph TD
 
 ---
 
-## 🎮 Current Status
+## Status
 
 | Subsystem | Status | Implementation Details |
 |---|:---:|---|
-| **Front-End & Menus** | ✅ **Full Speed (60 FPS)** | Title screen, autosave management, main menu, fight selection, character select, and arena selection. |
-| **3D Rendering** | 🟡 **Active** | Full NV2A primitive topology coverage, dynamic vertex shader execution via WebGPU, texture cache with Morton swizzle decoding. |
-| **Combat Gameplay** | 🟡 **Playable / In Optimization** | Complete fight simulation running. Currently undergoing performance optimization from ~13 FPS baseline toward sustained 60 FPS target. |
-| **Audio** | ✅ **Operational** | BGM, voice lines, and sound effects decoded via MCPX APU voice generator and streamed via Web Audio API. |
-| **Input** | ✅ **Operational** | Full XInput gamepad support (via Web Gamepad API) and keyboard mapping with deadzone and trigger threshold calibration. |
-| **Saves & Storage** | ✅ **Operational** | Persistent save games and title caches stored in browser Origin Private File System (OPFS). |
+| **Front-End & Menus** | **Full Speed (60 FPS)** | Title screen, autosave management, main menu, fight selection, character select, and arena selection. |
+| **3D Rendering** | **Active** | Full NV2A primitive topology coverage, dynamic vertex shader execution via WebGPU, texture cache with Morton swizzle decoding. |
+| **Combat Gameplay** | **Playable / In Optimization** | Complete fight simulation running. Currently undergoing performance optimization from ~13 FPS baseline toward sustained 60 FPS target. |
+| **Audio** | **Operational** | BGM, voice lines, and sound effects decoded via MCPX APU voice generator and streamed via Web Audio API. |
+| **Input** | **Operational** | Full XInput gamepad support (via Web Gamepad API) and keyboard mapping with deadzone and trigger threshold calibration. |
+| **Saves & Storage** | **Operational** | Persistent save games and title caches stored in browser Origin Private File System (OPFS). |
 
 ---
 
-## 🕹️ Controls
+## Controls
 
 The port supports native USB/Bluetooth gamepads (Xbox, PlayStation, standard HID) via the browser Gamepad API, as well as keyboard mapping:
 
@@ -82,7 +82,7 @@ The port supports native USB/Bluetooth gamepads (Xbox, PlayStation, standard HID
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## Building and Running
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18.0 or newer)
@@ -100,33 +100,49 @@ cd ffny-browser
 npm install
 ```
 
-### 3. Provide Your Disc Image
+### 3. Provide Disc Image
 Place your legitimately dumped copy of **Def Jam: Fight for NY (USA)** in the project directory as:
 ```text
 Def Jam - Fight for NY (USA).xiso.iso
 ```
 
-### 4. Launch the Local Dev Server
+### 4. Launch Local Development Server
 ```bash
 npm start
 ```
-The launcher will start a local high-performance server and open `http://127.0.0.1:8197` in your browser with the game ready to play.
+The launcher will start a local server and open `http://127.0.0.1:8197` in your browser.
 
 ---
 
-## 🛠️ Performance Optimization Roadmap
+## Testing & Verification
+
+Automated unit, ABI, and regression test suites can be executed with:
+
+```bash
+npm test
+```
+
+Automated headless browser integration benchmarks (testing route replay through menus to combat):
+
+```bash
+npm run test:benchmark
+```
+
+---
+
+## Performance Optimization Roadmap
 
 The project is currently working through a 4-phase optimization plan to bring combat to sustained 60 FPS on desktop and mobile devices:
 
-- [x] **Phase 0 (Completed)**: Asynchronous GPU semaphore fences, precomputed bit-exact APU gain lookup tables, and zero-delay worker yielding (jumped from 1.75 to ~13 FPS).
-- [ ] **Phase 1 (In Progress)**: Single-pass WebGPU render-pass coalescing to eliminate mobile TBDR tile memory thrashing; C++ vertex attribute decode hoisting.
-- [ ] **Phase 2**: Flat WebAssembly linear memory access (`i32.load`), Wasm JSPI (JavaScript Promise Integration) to eliminate Asyncify overhead, and Wasm SIMD128 for matrix transforms.
-- [ ] **Phase 3**: High-level Web Audio AudioWorklet streaming (bypassing 64-channel software voice synthesis).
-- [ ] **Phase 4**: Direct Criterion RenderWare / Direct3D8 API interception, bypassing low-level pushbuffer encoding entirely.
+- **Phase 0 (Completed)**: Asynchronous GPU semaphore fences, precomputed bit-exact APU gain lookup tables, and zero-delay worker yielding (jumped from 1.75 to ~13 FPS).
+- **Phase 1 (In Progress)**: Single-pass WebGPU render-pass coalescing to eliminate mobile TBDR tile memory thrashing; C++ vertex attribute decode hoisting.
+- **Phase 2**: Flat WebAssembly linear memory access (`i32.load`), Wasm JSPI (JavaScript Promise Integration) to eliminate Asyncify overhead, and Wasm SIMD128 for matrix transforms.
+- **Phase 3**: High-level Web Audio AudioWorklet streaming (bypassing 64-channel software voice synthesis).
+- **Phase 4**: Direct Criterion RenderWare / Direct3D8 API interception, bypassing low-level pushbuffer encoding entirely.
 
 ---
 
-## ⚖️ Legal & Attribution
+## Legal & Attribution
 
 - **Def Jam: Fight for NY** is a trademark of Electronic Arts Inc. and Def Jam Recordings.
 - This repository contains **no copyrighted code, binary executables, textures, audio, or game assets**.
@@ -135,6 +151,7 @@ The project is currently working through a 4-phase optimization plan to bring co
 
 ---
 
-## 📜 License
+## License
 
 Licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+
