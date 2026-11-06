@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.svg" alt="Def Jam: Fight for NY — Browser Edition" width="100%" />
+  <img src="assets/logo.svg" alt="Def Jam: Fight for NY — In Browser" width="360" />
 
   <br/><br/>
 
