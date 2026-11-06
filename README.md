@@ -1,9 +1,15 @@
-# Def Jam: Fight for NY — WebAssembly & WebGPU Port
+<div align="center">
+  <img src="assets/logo.svg" alt="Def Jam: Fight for NY — Browser Edition" width="100%" />
 
-[![WebAssembly](https://img.shields.io/badge/WebAssembly-Wasm-654FF0?logo=webassembly&logoColor=white)](https://webassembly.org/)
-[![WebGPU](https://img.shields.io/badge/WebGPU-Graphics-green?logo=w3c&logoColor=white)](https://www.w3.org/TR/webgpu/)
-[![Platform](https://img.shields.io/badge/Platform-Chromium%20%7C%20WebKit%20%7C%20Gecko-blue)](https://caniuse.com/webgpu)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+  <br/><br/>
+
+  [![WebAssembly](https://img.shields.io/badge/WebAssembly-Wasm-654FF0?logo=webassembly&logoColor=white)](https://webassembly.org/)
+  [![WebGPU](https://img.shields.io/badge/WebGPU-Graphics-green?logo=w3c&logoColor=white)](https://www.w3.org/TR/webgpu/)
+  [![Platform](https://img.shields.io/badge/Platform-Chromium%20%7C%20WebKit%20%7C%20Gecko-blue)](https://caniuse.com/webgpu)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+</div>
+
+<br/>
 
 A client-side browser port of **Def Jam: Fight for NY** (Original Xbox, 2004), statically recompiled from x86 machine code to WebAssembly, paired with a native WebGPU rendering backend and Web Audio system.
 

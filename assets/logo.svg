@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="100%" height="100%">
+  <defs>
+    <!-- Background & Frame Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0d13" />
+      <stop offset="50%" stop-color="#0e121a" />
+      <stop offset="100%" stop-color="#07080c" />
+    </linearGradient>
+
+    <linearGradient id="frameBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#2a3342" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#0284c7" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#dc2626" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Metallic Shield Gradients -->
+    <linearGradient id="shieldChrome" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="75%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="redGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#dc2626" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Filters for Glow & Depth -->
+    <filter id="neonRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Browser Card Canvas -->
+  <rect x="6" y="6" width="908" height="328" rx="14" fill="url(#bgGrad)" stroke="url(#frameBorder)" stroke-width="2" />
+
+  <!-- Subtle Blueprint Tech Grid in Background -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+    <line x1="6" y1="70" x2="914" y2="70" />
+    <line x1="6" y1="130" x2="914" y2="130" />
+    <line x1="6" y1="190" x2="914" y2="190" />
+    <line x1="6" y1="250" x2="914" y2="250" />
+    <line x1="160" y1="46" x2="160" y2="334" />
+    <line x1="310" y1="46" x2="310" y2="334" />
+    <line x1="460" y1="46" x2="460" y2="334" />
+    <line x1="610" y1="46" x2="610" y2="334" />
+    <line x1="760" y1="46" x2="760" y2="334" />
+  </g>
+
+  <!-- Browser Window Header Bar -->
+  <rect x="6" y="6" width="908" height="40" rx="14" fill="#0f141f" />
+  <rect x="6" y="32" width="908" height="14" fill="#0f141f" />
+  <line x1="6" y1="46" x2="914" y2="46" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Browser Window Controls (Dots) -->
+  <circle cx="28" cy="26" r="6" fill="#ef4444" opacity="0.9" />
+  <circle cx="48" cy="26" r="6" fill="#f59e0b" opacity="0.9" />
+  <circle cx="68" cy="26" r="6" fill="#10b981" opacity="0.9" />
+
+  <!-- Browser Address / URL Bar Pill -->
+  <rect x="96" y="14" width="480" height="24" rx="6" fill="#1a2233" stroke="#2a374f" stroke-width="1" />
+  <g transform="translate(108, 19)" fill="#64748b">
+    <!-- Lock Icon -->
+    <path d="M4 4V3a2 2 0 1 1 4 0v1h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h1zm1-1a1 1 0 0 0-2 0v1h2V3z" />
+  </g>
+  <text x="124" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">
+    https://<tspan fill="#f1f5f9" font-weight="600">ffny.client</tspan>/combat<tspan fill="#64748b">?backend=webgpu&amp;arch=wasm32</tspan>
+  </text>
+
+  <!-- Right Header Badges: WASM + WEBGPU -->
+  <g transform="translate(670, 15)">
+    <rect x="0" y="0" width="105" height="22" rx="4" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="52" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="10.5" font-weight="700" fill="#a5b4fc" text-anchor="middle" letter-spacing="0.5">WASM NATIVE</text>
+  </g>
+  <g transform="translate(784, 15)">
+    <rect x="0" y="0" width="115" height="22" rx="4" fill="#042f2e" stroke="#14b8a6" stroke-width="1" />
+    <text x="57" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="10.5" font-weight="700" fill="#5eead4" text-anchor="middle" letter-spacing="0.5">WEBGPU 60FPS</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LEFT EMBLEM: THE DEF JAM VENDETTA / FFNY "II" SHIELD -->
+  <!-- ======================================================== -->
+  <g transform="translate(80, 80)">
+    <!-- Outer Shield Ambient Glow -->
+    <path d="M 0,30 C 0,5 25,0 55,0 C 95,0 120,40 120,40 C 120,40 145,0 185,0 C 215,0 240,5 240,30 C 240,110 120,205 120,205 C 120,205 0,110 0,30 Z"
+          fill="none" stroke="#ef4444" stroke-width="8" opacity="0.15" filter="url(#neonRed)" />
+
+    <!-- Main Outer Chevron Heart / Shield -->
+    <path d="M 0,30 C 0,5 25,0 55,0 C 95,0 120,40 120,40 C 120,40 145,0 185,0 C 215,0 240,5 240,30 C 240,110 120,205 120,205 C 120,205 0,110 0,30 Z"
+          fill="#111622" stroke="url(#shieldChrome)" stroke-width="6.5" stroke-linejoin="round" />
+
+    <!-- Inner Inner Recessed Shield Body -->
+    <path d="M 20,38 C 20,20 38,16 60,16 C 90,16 110,48 120,58 C 130,48 150,16 180,16 C 202,16 220,20 220,38 C 220,105 120,182 120,182 C 120,182 20,105 20,38 Z"
+          fill="#090c13" stroke="#252f42" stroke-width="2" />
+
+    <!-- Red Edge Neon Highlights on Shield Wings -->
+    <path d="M 24,36 C 24,24 38,20 58,20 C 85,20 106,48 116,58" fill="none" stroke="url(#redGlow)" stroke-width="3" stroke-linecap="round" />
+    <path d="M 216,36 C 216,24 202,20 182,20 C 155,20 134,48 124,58" fill="none" stroke="url(#cyanAccent)" stroke-width="3" stroke-linecap="round" />
+
+    <!-- THE ICONIC "II" PILLARS IN THE CENTER -->
+    <!-- Left Column (I) -->
+    <path d="M 72,55 L 102,55 L 102,67 C 96,68 93,73 93,82 L 93,126 C 93,135 96,140 102,141 L 102,153 L 72,153 L 72,141 C 78,140 81,135 81,126 L 81,82 C 81,73 78,68 72,67 Z"
+          fill="url(#shieldChrome)" stroke="#0f172a" stroke-width="1.5" />
+
+    <!-- Right Column (I) -->
+    <path d="M 138,55 L 168,55 L 168,67 C 162,68 159,73 159,82 L 159,126 C 159,135 162,140 168,141 L 168,153 L 138,153 L 138,141 C 144,140 147,135 147,126 L 147,82 C 147,73 144,68 138,67 Z"
+          fill="url(#shieldChrome)" stroke="#0f172a" stroke-width="1.5" />
+
+    <!-- Bottom Triangular Chevron V -->
+    <path d="M 88,162 L 120,192 L 152,162 L 137,162 L 120,178 L 103,162 Z"
+          fill="url(#redGlow)" />
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- RIGHT CONTENT: THE DEF JAM WORDMARK & BROWSER BADGING -->
+  <!-- ======================================================== -->
+  <g transform="translate(370, 78)">
+
+    <!-- Top Franchise Banner -->
+    <g transform="translate(0, 18)">
+      <rect x="0" y="0" width="168" height="20" rx="3" fill="#dc2626" />
+      <text x="84" y="14" font-family="'Impact', 'Arial Black', sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">DEF JAM</text>
+
+      <text x="180" y="14" font-family="'Impact', 'Arial Black', -apple-system, sans-serif" font-size="12" font-weight="700" fill="#94a3b8" letter-spacing="2">
+        STREET RECOMPILATION
+      </text>
+    </g>
+
+    <!-- Main Title: FIGHT FOR NY -->
+    <g transform="translate(0, 80)">
+      <!-- Drop Shadow for Text -->
+      <text x="2" y="2" font-family="'Impact', 'Arial Black', sans-serif" font-size="62" font-weight="900" fill="#000000" letter-spacing="2.5" opacity="0.8">
+        FIGHT FOR NY
+      </text>
+      <!-- Main Metallic/White Text -->
+      <text x="0" y="0" font-family="'Impact', 'Arial Black', sans-serif" font-size="62" font-weight="900" fill="url(#shieldChrome)" letter-spacing="2.5">
+        FIGHT FOR NY
+      </text>
+      <!-- Concrete Underline Scratch Bar -->
+      <rect x="2" y="14" width="480" height="7" fill="url(#redGlow)" rx="1.5" />
+    </g>
+
+    <!-- Subtitle: BROWSER EDITION Pill & Details -->
+    <g transform="translate(0, 134)">
+      <!-- Crimson Browser Tag -->
+      <rect x="0" y="0" width="180" height="30" rx="6" fill="#dc2626" stroke="#f87171" stroke-width="1.5" filter="url(#subtleGlow)" />
+      <!-- Browser Icon inside Tag -->
+      <g transform="translate(10, 7)" stroke="#ffffff" stroke-width="1.8" fill="none">
+        <rect x="0" y="0" width="16" height="13" rx="2" />
+        <line x1="0" y1="4" x2="16" y2="4" />
+        <circle cx="3" cy="2" r="0.5" fill="#fff" />
+        <circle cx="6" cy="2" r="0.5" fill="#fff" />
+      </g>
+      <text x="105" y="20" font-family="'Impact', 'Arial Black', sans-serif" font-size="14.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">
+        BROWSER EDITION
+      </text>
+
+      <!-- Client-Side Engine Specs -->
+      <text x="196" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace" font-size="12" font-weight="600" fill="#cbd5e1" letter-spacing="0.5">
+        WebAssembly <tspan fill="#38bdf8">•</tspan> WebGPU <tspan fill="#38bdf8">•</tspan> Web Audio
+      </text>
+    </g>
+
+    <!-- Feature Description / Spec Line -->
+    <g transform="translate(2, 196)">
+      <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#64748b" letter-spacing="0.3">
+        Zero Emulated VM Overhead <tspan fill="#334155">|</tspan> Direct Native Execution <tspan fill="#334155">|</tspan> 60 FPS Combat Target
+      </text>
+    </g>
+
+  </g>
+</svg>
