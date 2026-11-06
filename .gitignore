@@ -1,0 +1,41 @@
+# Disc Images & Game Assets (Strictly Excluded)
+*.iso
+*.xiso
+*.xbe
+local-data/
+game_files/
+extracted/
+*.viv
+*.mad
+*.sod
+
+# Build Outputs & Generated Binaries
+build/
+dist/
+objects/
+*.o
+*.obj
+*.lib
+*.a
+*.wasm
+*.pending.*
+
+# Logs, Dumps & Test Captures
+*.log
+*.log.err
+*.err
+*.dump
+.empryo/
+logs/
+bench-runs/
+integration-runs/
+combat-check/
+overnight/
+
+# Temporary & Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+package-lock.json
